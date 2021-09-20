@@ -1,19 +1,34 @@
-import React from 'react';
-import PokeCards from '../PokeCards/Pokecards';
+import { PokemonSchema } from '../../types/PokemonSchema';
 import Pokelist from '../Pokelist/Pokelist';
 import PokeSearchResult from '../PokeSearchResult/PokeSearchResult';
 import Searchbox from '../Searchbox/Searchbox';
 import './Pokedex.css';
 
-const Pokedex = () => {
+interface PokedexProps{
+    searchedPokemons: PokemonSchema[];
+    selectedPokemon: PokemonSchema | undefined;
+    onInputChange: (inputValue: string) => void;
+    onPokemonClick: (pokemonName: string) => void;
+}
+
+const Pokedex = (
+    {
+        searchedPokemons,
+        selectedPokemon,
+        onInputChange,
+        onPokemonClick
+    }: PokedexProps) => {
     return (
         <div className="pokedex-container">
             <div className="pokelist-container">
-                <Searchbox />
-                <Pokelist />
+                <Searchbox onInputChange={onInputChange} />
+                <Pokelist 
+                searchedPokemons={searchedPokemons} 
+                onPokemonClick={onPokemonClick}
+                />
             </div>
             <div className="pokesearchresult-container">
-            <PokeSearchResult />
+                <PokeSearchResult selectedPokemon={selectedPokemon}/>
             </div>
         </div>
     )
