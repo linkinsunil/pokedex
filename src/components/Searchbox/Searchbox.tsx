@@ -1,9 +1,19 @@
 import './Searchbox.css';
-import React from 'react';
 
-const Searchbox = () => {
+interface SearchboxProps {
+    onInputChange: (inputValue: string) => void;
+}
+
+const Searchbox = (props: SearchboxProps) => {
     return(
-        <input type="search" className="search" placeholder="Search Pokemons" />
+        <input
+            onChange={(e) => {
+                props.onInputChange(e.target.value)                
+            }}
+            type="search"
+            className="search"
+            placeholder="Search Pokemons"
+        />
     )
 }
 
