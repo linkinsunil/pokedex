@@ -1,11 +1,17 @@
 import './PokeCards.css';
-import React from "react";
 
-const PokeCards = (props: any) => {
+interface PokecardsProps{
+    spriteUrl?:string;
+    name:string;
+    onPokemonClick: (pokemonName: string) => void;
+}
+
+const PokeCards = ({spriteUrl, name, onPokemonClick}: PokecardsProps) => {
     return(
-        <div className="pokecard">
+        <div onClick={() => onPokemonClick(name)} className="pokecard">
             {/* Pokemon Image Here */}
-            <p>{props.name}</p>
+            <img src={spriteUrl} alt="pokemon" className="pokemon-sprite" />
+            <p>{name}</p>
         </div>
     )
 }
