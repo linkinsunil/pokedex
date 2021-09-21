@@ -18,6 +18,18 @@
     border-radius: 10px 1px 1px 10px;
 }
 
+.pokelist-container::-webkit-scrollbar-thumb {
+    box-shadow: inset 10px 10px 10px #f6d743;
+}
+
+.pokelist-container::-webkit-scrollbar-track {
+    background-color: darkgrey;
+}
+
+.pokelist-container::-webkit-scrollbar {
+    width: 10px;
+}
+
 .pokesearchresult-container {
     display: flex;
     align-items: center;
